@@ -1,0 +1,32 @@
+﻿@model Supporter.Entity.Versiyon
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 data-aos="zoom-in-right" class="hvr-buzz">Versiyon Sil</h2>
+
+<h3>Silmek istediğinize Eminmisiniz?</h3>
+<div>
+    <h4>Versiyon</h4>
+    <hr />
+    <dl class="dl-horizontal" data-aos="zoom-in-down">
+        <dt>
+            @Html.DisplayNameFor(model => model.VersiyonAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersiyonAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Versiyonları Listele", "Index")
+        </div>
+    }
+</div>

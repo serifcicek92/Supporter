@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Supporter.Entity.Calisan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Çalışanlar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Ekle", "Create")
+</p>
+<table class="table" data-aos="zoom-in">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CalisanAd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CalisanTel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalisanAd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalisanTel)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("İncele", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,27 @@
+﻿@model Supporter.Entity.IlacDepo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Depo Detayı</h2>
+
+<div>
+    <h4>İlaç Depo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DepoAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepoAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Depoları listele", "Index")
+</p>

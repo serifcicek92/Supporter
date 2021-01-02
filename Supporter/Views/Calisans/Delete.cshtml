@@ -1,0 +1,40 @@
+﻿@model Supporter.Entity.Calisan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2  data-aos="zoom-in-right">Çalışan Kayıt Sil</h2>
+
+<h3  data-aos="zoom-in-right">Bu çalışan kayıdını silmek istediğinizden eminmisiniz?</h3>
+<div  data-aos="zoom-in">
+    <h4>Çalışan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CalisanAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalisanAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CalisanTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalisanTel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Çalışanları Listele", "Index")
+        </div>
+    }
+</div>

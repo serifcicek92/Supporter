@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Supporter.Entity.Cozum>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 data-aos="zoom-in-left">Çözümler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Bir Çözüm Oluştur", "Create")
+</p>
+<table class="table" data-aos="zoom-in">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CozumYazi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CozumYazi)
+        </td>
+        <td>
+            @Html.ActionLink("Çözümü Düzenle", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Çözümü İncele", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Çözümü Sils", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Supporter.Entity.AnaUrun>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 data-aos="zoom-in-right">Ana Ürünler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+<table class="table" data-aos="zoom-in">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AnaUrunAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnaUrunAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("İncele", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,26 @@
+﻿@model Supporter.Entity.AnaUrun
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 data-aos="zoom-in-right">Ana Ürün Detayı</h2>
+
+<div data-aos="zoom-in">
+    <h4 data-aos="zoom-in-right">Ana Ürün</h4>
+    <hr />
+    <dl class="dl-horizontal" data-aos="zoom-in">
+        <dt>
+            @Html.DisplayNameFor(model => model.AnaUrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnaUrunAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Ana Ürünleri Listele", "Index")
+</p>

@@ -1,0 +1,129 @@
+﻿@model Supporter.Entity.Kullanici.Kullanici
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 data-aos="zoom-in-right">Kullanıcıyı Sil</h2>
+
+<h3 data-aos="zoom-in-right">Bu kullanıcıyı Silmek İstediğinizden Emin misiniz?</h3>
+<div>
+    <h4 data-aos="zoom-in-right">Kullanıcı</h4>
+    <hr />
+    <dl class="dl-horizontal" data-aos="zoom-in-right">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Rol.RolAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rol.RolAdi)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KullaniciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KullaniciAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parola)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parola)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReParola)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReParola)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailAdres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailAdres)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Cinsiyet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cinsiyet)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DogumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DogumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusturmaTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturmaTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SonDegisiklikYapan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SonDegisiklikYapan)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gecerlimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gecerlimi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Kullanıcıları Listele", "Index")
+        </div>
+    }
+</div>

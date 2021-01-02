@@ -1,0 +1,212 @@
+﻿@model Supporter.Entity.Problem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 data-aos="zoom-in-left">Problem Oluştur</h2>
+
+
+@using (Html.BeginForm(null,null,FormMethod.Post, new {@enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal" data-aos="zoom-in">
+    <h4>Problem</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProblemTanimi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ProblemTanimi, new { htmlAttributes = new { @class = "form-control uzunTb" } })
+            @Html.ValidationMessageFor(model => model.ProblemTanimi, "", new { @class = "text-danger uyari-d" })
+            @Html.ValidationMessageFor(model => model.ProblemTanimi, "", new { @class = "text-primary uyari-p" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Not, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Not, new { htmlAttributes = new { @class = "form-control uzunTb" } })
+            @Html.ValidationMessageFor(model => model.Not, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnahtarSozcukler, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AnahtarSozcukler, new { htmlAttributes = new { @class = "form-control uzunTb" } })
+            @Html.ValidationMessageFor(model => model.AnahtarSozcukler, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cozum1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cozum1, new { htmlAttributes = new { @class = "form-control uzunTb" } })
+            @Html.ValidationMessageFor(model => model.Cozum1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cozum2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cozum2, new { htmlAttributes = new { @class = "form-control uzunTb" } })
+            @Html.ValidationMessageFor(model => model.Cozum2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cozum3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cozum3, new { htmlAttributes = new { @class = "form-control uzunTb" } })
+            @Html.ValidationMessageFor(model => model.Cozum3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AnaUrunId, "Ana Ürün", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("AnaUrunId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AnaUrunId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.VersiyonId, "Versiyon", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("VersiyonId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.VersiyonId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ModulId, "Modül", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ModulId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ModulId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.CalisanId, "CalisanId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CalisanId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CalisanId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProblemTipiId, "Problem Tipi", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ProblemTipiId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProblemTipiId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Tarih, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tarih, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tarih, "", new { @class = "text-danger"})
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IlacDepoId, "Depo Adı", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("IlacDepoId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.IlacDepoId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CozumTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.CozumTarihi, new { @class = "form-control", @type = "date" })
+            @Html.ValidationMessageFor(model => model.CozumTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.Gecerlimi, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="Gecerlimi">Geçerli mi?</label>
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Gecerlimi)
+                @Html.ValidationMessageFor(model => model.Gecerlimi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Resim 1", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="Resim1" value="seç" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Resim 2", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="Resim2" value="seç" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Resim 3", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="Resim3" value="seç" />
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Dosya Ekle (pdf,xlsx,docx)", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="EkDosya" value="seç" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Oluştur" class="btn btn-success hvr-pop" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".uyari-p").html("");
+            $("#ProblemTanimi").keyup(function () {
+                var deger = $("#ProblemTanimi").val();
+                //alert($deger);
+                $.ajax({
+                    url: "ProblemKontrolu",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {kelime: deger },
+                    success: function (getdata) {
+                        //alert(getdata);
+                        if (getdata != "" && deger!="") {
+                            $(".uyari-d").html("Benzer Problem: " + getdata);
+                            $(".uyari-p").html("");
+                        } else {
+                            $(".uyari-p").html("Benzer Problem Bulunmuyor");
+                            $(".uyari-d").html("");
+                        }
+                        //alert(getdata);
+                        //$("#img-form")[0].reset();
+                    }
+                });
+
+            });
+        });
+    </script>
+}

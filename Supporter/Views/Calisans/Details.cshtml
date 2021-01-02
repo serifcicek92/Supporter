@@ -1,0 +1,34 @@
+﻿@model Supporter.Entity.Calisan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Çalışan Detayı</h2>
+
+<div  data-aos="zoom-in">
+    <h4>Çalışan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CalisanAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalisanAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CalisanTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalisanTel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Listele", "Index")
+</p>

@@ -1,0 +1,120 @@
+﻿@model Supporter.Entity.Problem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 data-aos="zoom-in-left">Problem Sil</h2>
+
+<h3 data-aos="zoom-in-left">Bunu Silmek İstediğinizden Eminmisiniz?</h3>
+<div data-aos="zoom-in">
+    <h4>Problem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AnaUrun.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnaUrun.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemOlusturanKullanici.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemOlusturanKullanici.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modul.ModulAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modul.ModulAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Versiyon.VersiyonAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Versiyon.VersiyonAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProblemTanimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemTanimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnahtarSozcukler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnahtarSozcukler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cozum1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cozum1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cozum2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cozum2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cozum3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cozum3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CozumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CozumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gecerlimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gecerlimi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger hvr-glow" /> |
+            @Html.ActionLink("Listeye Geri Dön", "Index")
+        </div>
+    }
+</div>

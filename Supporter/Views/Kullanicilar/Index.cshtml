@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Supporter.Entity.Kullanici.Kullanici>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 data-aos="zoom-in-right" class="hvr-buzz aos-init aos-animate">Kullanıcılar</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kullanıcı Oluştur", "Create")
+</p>
+<table class="table" data-aos="zoom-in-down">
+    <tr>
+        <th>
+            Rol Adı @*@Html.DisplayNameFor(model => model.Rol.RolAdi)*@
+        </th>
+        <th>Kişi
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>
+        <th>Kişi
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KullaniciAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parola)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ReParola)*@Parola Tekrar
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailAdres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cinsiyet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DogumTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OlusturmaTarihi)
+        </th>
+        <th>
+            Son Değişiklik Tarihi
+            @*@Html.DisplayNameFor(model => model.SonDegisiklikYapan)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gecerlimi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rol.RolAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyadi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KullaniciAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parola)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReParola)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailAdres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cinsiyet)
+            @{
+                if (item.Cinsiyet == true)
+                {
+                    <span>Erkek</span>
+
+                }
+                else {
+                    <span>Kadın</span>
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DogumTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OlusturmaTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SonDegisiklikYapan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gecerlimi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Id }) @*|
+            @Html.ActionLink("Detay", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Sil", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

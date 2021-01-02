@@ -1,0 +1,186 @@
+﻿@model Supporter.Entity.ProblemDto
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    string yol = "http://" + @Request.Url.Host + ":8098";
+}
+@if (ViewBag.Eklendimi == "True")
+{
+    <script>
+        alert("Problem Veri Tabanına Eklendi");
+    </script>
+
+}
+<h2 data-aos="zoom-in-left">Problem Detayı</h2>
+<style>
+    .mydl > dt, .mydl > dd {
+        margin-top: 1.5rem;
+    }
+
+        .mydl > dt:first-child, .mydl > dd:first-child {
+            margin-top: 0px !important;
+        }
+</style>
+<div data-aos="zoom-in">
+    <h4>Problem</h4>
+    <hr />
+    @if (Model.Resim1 != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Ekran Görüntüleri</h5>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+
+
+            @if (Model.Resim1 != null)
+            {
+                <div style="height:56px; float:left;">
+                    <a class="example-image-link" href="@yol/Content/resimler/hatalar/@Model.Resim1"
+                       data-lightbox="example-1"><img class="example-image" src="@yol/Content/resimler/hatalar/@Model.Resim1.ToString()" alt="image-1" height="56px"></a>
+                </div>
+            }
+            @if (Model.Resim2 != null)
+            {
+                <div style="height:56px; float:left;">
+                    <a class="example-image-link" href="@yol/Content/resimler/hatalar/@Model.Resim2"
+                       data-lightbox="example-1"><img class="example-image" src="@yol/Content/resimler/hatalar/@Model.Resim2" alt="image-2" height="56px"></a>
+                </div>
+            }
+
+            @if (Model.Resim3 != null)
+            {
+                <div style="height:56px; float:left;">
+                    <a class="example-image-link" href="@yol/Content/resimler/hatalar/@Model.Resim3"
+                       data-lightbox="example-1"><img class="example-image" src="@yol/Content/resimler/hatalar/@Model.Resim3" alt="image-3" height="56px"></a>
+                </div>
+            }
+            @if (Model.EkDosya != null)
+            {
+                <div style="height:56px; float:left;">
+                    <a class="btn btn-success hvr-grow" href="@yol/Content/resimler/hatalar/@Model.EkDosya">Ek Dosyayı İndir.</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <dl class="dl-horizontal mydl">
+        <dt>
+            Problem İd :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            Problemi Oluşturan :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemOlusturanKullaniciAdiSoyadi)
+        </dd>
+
+        <dt>
+            Problemi Çözen :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemCozenKullaniciAdiSoyadi)
+        </dd>
+
+        <dt>
+            Modül :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModulAdi)
+        </dd>
+
+        <dt>
+            Versiyon :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VersiyonAdi)
+        </dd>
+
+        <dt>
+            Problem Tanımı :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemTanimi)
+        </dd>
+        <dt>
+            Problem Tipi :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProblemTipi)
+        </dd>
+        <dt>
+            Anahtar Sözcükler :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnahtarSozcukler)
+        </dd>
+
+        <dt>Problem Notu :</dt>
+        <dd>@Html.DisplayFor(model => model.Not)</dd>
+
+        <dt>
+            Çözüm Adım 1 :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cozum1)
+        </dd>
+
+        <dt>
+            Çözüm Adım 2 :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cozum2)
+        </dd>
+
+        <dt>
+            ÇözümAdım 3 :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cozum3)
+        </dd>
+
+        <dt>
+            Oluşturma Tarihi :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            Çözüm tarihi :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CozumTarihi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Problemlere Geri Dön", "Index")
+</p>
+@section scripts{
+    <link rel="stylesheet" href="~/Content/lightbox.min.css">
+    <script src="~/Scripts/lightbox-plus-jquery.min.js"></script>
+}

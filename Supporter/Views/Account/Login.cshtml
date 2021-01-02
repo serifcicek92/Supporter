@@ -1,0 +1,53 @@
+﻿@model Supporter.Models.Kullanici.KullaniciLoginDto
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container pb-5" data-aos="zoom-in">
+    <h2>Kullanıcı Girişi</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2 hvr-buzz" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KullaniciAdi, new { htmlAttributes = new { @class = "form-control  hvr-grow" } })
+                @Html.ValidationMessageFor(model => model.KullaniciAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md-2 hvr-buzz" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control hvr-grow" } })
+                @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Giriş" class="btn btn-primary  hvr-grow" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+               
+                    @Html.ActionLink("Kayıt Ol", "Register")
+               
+            </div>
+        </div>
+    </div>
+
+    }
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,380 @@
+﻿@model IEnumerable<Supporter.Entity.Problem>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    string yol = "http://" + @Request.Url.Host + ":8098";
+}
+<style>
+    /*#myDataTable > tbody td {
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        text-overflow: ellipsis !important;
+        max-width: 150px;
+    }*/
+    .czm {
+        /*max-width: 90px !important;*/
+        max-width: 370px !important;
+        overflow: hidden !important;
+        display: block !important;
+        height: 76px !important;
+        text-overflow: ellipsis !important;
+        text-align: center !important;
+    }
+</style>
+
+
+<h2 data-aos="zoom-in-right" class="hvr-buzz">Oluşan Problemler</h2>
+@*start time: @ViewBag.StartTime
+    end time: @ViewBag.EndTime*@
+<hr />
+@*<div class="row filter-row" data-aos="zoom-in-down">
+        <div class="col-md-12 text-left"><button class="btn btn-primary toggle-filtrele hvr-grow">Verileri Filtrelemek İçin Tıklayınız</button></div>
+    </div>*@
+<div class="filtrele">
+    @*<div class="row filter-row" data-aos="zoom-in-down">
+            <div class="col-md-12 text-center"> <h2 style="border-bottom:2px solid #808080; display:inline-block;" data-aos="fade-down-left" class="hvr-buzz-out">Filtreleme Bölümü</h2></div>
+        </div>*@
+    <div class="row filter-row" data-aos="zoom-in-down">
+
+        @using (Html.BeginForm())
+        {
+            <div class="row filter-row">
+
+                @Html.AntiForgeryToken()
+
+
+
+
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Ana Ürün</label>
+                        @Html.DropDownList("AnaUrunId", null, "Hepsi", htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Kullanıcı</label>
+                        @Html.DropDownList("Users", null, "Hepsi", htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Modül Adı</label>
+                        @Html.DropDownList("ModulId", null, "Hepsi", htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Versiyon Adı</label>
+                        @Html.DropDownList("VersiyonId", null, "Hepsi", htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Depo</label>
+                        @Html.DropDownList("IlacDepoId", null, "Hepsi", htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Problem Tanımı</label>
+                        @Html.TextBox("ProblemTanimi", (object)ViewBag.Filter.ProblemTanimi, htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                    </div>
+                </div>
+                <!--
+                    <div class="col-sm-12 col-md-3 col-xs-12">
+                        <div class="form-group form-focus">
+                            <label class="control-label">Problem Tanimi</label>
+                            @Html.TextBox("ProblemTanimi", (object)ViewBag.Filter.ProblemTanimi, htmlAttributes: new { @class = "form-control floating hvr-grow" })
+                        </div>
+                    </div>
+                -->
+            </div>
+            <div class="row filter-row">
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Başlangıç Tarihi</label>
+
+                        @*@Html.DropDownList("Tarih", null, "Hepsi", htmlAttributes: new { @class = "form-control floating" })*@
+                        <input type="date" class="form-control floating  hvr-grow" name="BasTarih" value='@ViewBag.Filter.BasTarih.ToString("yyyy-MM-dd")' />
+
+
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">Bitiş Tarihi</label>
+                        @*@Html.DropDownList("VersiyonId",null , "Hepsi", htmlAttributes: new { @class = "form-control floating" })*@
+                        <input type="date" class="form-control floating  hvr-grow" name="BitTarih" value='@ViewBag.Filter.BitTarih.ToString("yyyy-MM-dd")' />
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 col-md-2 col-sm-12">
+                    <div class="form-group form-focus select-focus">
+                        <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <button type="submit" class="btn btn-success btn-block form-control floating hvr-pop">Filtrele</button>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+<hr />
+<div class="row filter-row">
+    <div class="col-md-12 text-center"> <h2 style="border-bottom:2px solid #808080; display:inline-block;" data-aos="fade-down-right" class="hvr-buzz-out">Problem Listeleme Bölümü</h2></div>
+</div>
+<p>
+    @Html.ActionLink("Excel'e Aktar", "", null, new { @class = "btn btn-primary hvr-backward", @id = "toExcel" })
+    @Html.ActionLink("Yeni Problem Oluştur", "Create", null, new { @class = "btn btn-warning hvr-forward" })
+</p>
+<table class="display" id="myDataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProblemTanimi)<br /><br />
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnaUrun.AnaUrunAdi)
+                <br />
+                @if (UserHelper.Rol == 1)
+                {
+                    <a href="@yol/AnaUruns/Create" class="fas fa-plus-circle text-warning"></a>
+                }
+            </th>
+            @*<th>
+                    Oluşturan
+                    @Html.DisplayNameFor(model => model.ProblemOlusturanKullanici.Adi)
+                    <br />
+                    @if (UserHelper.Rol == 1)
+                    {
+                        <a href="@yol/Kullanicilar/Create" class="fas fa-plus-circle text-warning"></a>
+                    }
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Modul.ModulAdi)
+                <br />
+                @if (UserHelper.Rol == 1)
+                {
+                    <a href="@yol/Moduls/Create" class="fas fa-plus-circle text-warning"></a>
+                }
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Versiyon.VersiyonAdi)*@
+                Versiyon Adı
+                <br />
+                @if (UserHelper.Rol == 1)
+                {
+                    <a href="@yol/Versiyons/Create" class="fas fa-plus-circle text-warning"></a>
+                }
+            </th>
+            <th>
+                Problem Tipi<br />
+                @*@Html.DisplayNameFor(model => model.ProblemTipi)*@
+                @if (UserHelper.Rol == 1)
+                {
+                    <a href="@yol/ProblemTipi/Create" class="fas fa-plus-circle text-warning"></a>
+                }
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ProblemTanimi)<br /><br />
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.AnahtarSozcukler)<br /><br />
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Cozum1)<br /><br />
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cozum2)<br /><br />
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cozum3)<br /><br />
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tarih)<br /><br /><br />
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CozumTarihi)<br /><br />
+                </th>*@
+
+            <th>
+                @Html.DisplayNameFor(model => model.IlacDepo)<br /><br />
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarih)<br /><br />
+            </th>
+
+            @*<th>
+                    Oluşturan
+                    @Html.DisplayNameFor(model => model.ProblemOlusturanKullanici.Adi)
+                    <br />
+                    @if (UserHelper.Rol == 1)
+                    {
+                        <a href="@yol/Kullanicilar/Create" class="fas fa-plus-circle text-warning"></a>
+                    }
+                </th>*@
+
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.Gecerlimi)*@Geçerli mi?<br /><br />
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="czm">
+                    @Html.DisplayFor(modelItem => item.ProblemTanimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnaUrun.AnaUrunAdi)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ProblemOlusturanKullanici.Adi)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modul.ModulAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Versiyon.VersiyonAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProblemTipi.ProblemTipiAdi)
+                </td>
+                @*<td class="czm">
+                        @Html.DisplayFor(modelItem => item.ProblemTanimi)
+                    </td>*@
+                <td class="czm">
+                    @Html.DisplayFor(modelItem => item.AnahtarSozcukler)
+                </td>
+                @*<td class="czm">
+                        @Html.DisplayFor(modelItem => item.Cozum1)
+                    </td>
+                    <td class="czm">
+                        @Html.DisplayFor(modelItem => item.Cozum2)
+                    </td>
+                    <td class="czm">
+                        @Html.DisplayFor(modelItem => item.Cozum3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CozumTarihi)
+                    </td>*@
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.IlacDepo.DepoAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarih)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ProblemOlusturanKullanici.Adi)
+                    </td>*@
+                <td>
+
+                    @if (item.Gecerlimi)
+                    {
+
+                        <label>Evet</label>
+
+
+                    }
+                    else
+                    {
+
+                        <label> hayır</label >
+
+                    }
+                    @*@Html.DisplayFor(modelItem => item.Gecerlimi)*@
+                </td>
+                <td>
+                    <a href="../Problem/Edit/@item.Id" class="far fa-edit text-primary hvr-buzz"></a><br />
+                    <a href="../Problem/Details/@item.Id" class="fas fa-info-circle text-success hvr-buzz"></a><br />
+                    <a href="../Problem/Delete/@item.Id" class="far fa-trash-alt text-danger hvr-buzz"></a><br />
+                </td>
+
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/TableExport/3.3.13/css/tableexport.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+
+
+    <script>
+
+
+
+        //$(".toggle-filtrele").click(function () {
+        //    $(".filtrele").slideToggle();
+        //    if ($(this).text() == "Verileri Filtrelemek İçin Tıklayınız") {
+        //        $(this).text("Filtrelemeyi Gizle");
+        //    } else {
+        //        $(this).text("Verileri Filtrelemek İçin Tıklayınız");
+        //    };
+        //});
+
+        $(document).ready(function () {
+            //$(".filtrele").hide();
+
+            $("#myDataTable").DataTable({
+                "language": {
+                    "emptyTable": "Veri Bulunamıyor",
+                    "info": "_START_ ile _END_ Arasında Toplam _TOTAL_ Adet Gösteriliyor",
+                    "infoEmpty": " 0 ile 0 Arasında Toplam 0 Adet Veri Gösteriliyor",
+                    "lengthMenu": "Sayfa Başına _MENU_ Adet Veri Göster",
+                    "loadingRecords": "Yükleniyor...",
+                    "processing": "Hesaplanıyor...",
+                    "search": "Ara:",
+                    "zeroRecords": "Hiç bir veri bulunamadı!!",
+                    "paginate": {
+                        "first": "Birinci",
+                        "last": "Sonraki",
+                        "next": "İleri>>",
+                        "previous": "<<Geri"
+                    },
+                    "aria": {
+                        "sortAscending": ": artan değer sıralamak için etkinleştir",
+                        "sortDescending": ": azalan değer sıralamak için etkinleştir"
+                    }
+
+                },
+                "order": [[7, "desc"]],
+
+            });
+
+
+
+        });
+        $("#toExcel").click(function () {
+            $("#myDataTable").table2excel();
+        });
+    </script>
+
+
+
+
+}

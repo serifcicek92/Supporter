@@ -1,0 +1,32 @@
+﻿@model Supporter.Entity.AnaUrun
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 data-aos="zoom-in-right">Ana Ürünü Sil</h2>
+
+<h3 data-aos="zoom-in-right">Bu ana ürünü silmek istediğinizden emin misiniz?</h3>
+<div data-aos="zoom-in">
+    <h4>Ana Ürün</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AnaUrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnaUrunAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default hvr-glow" /> |
+            @Html.ActionLink("Ana Ürünleri Listele", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model Supporter.Entity.Modul
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 data-aos="zoom-in-left">Modül Sil</h2>
+
+<h3 data-aos="zoom-in-left">Bu Modülü Silmek İstediğinizden Emin misiniz?</h3>
+<div data-aos="zoom-in">
+    <h4>Modül</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModulAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModulAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default hvr-glow" /> |
+            @Html.ActionLink("Listeye Geri Dön", "Index")
+        </div>
+    }
+</div>

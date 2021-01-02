@@ -1,0 +1,18 @@
+﻿@using Supporter.Entity;
+@model IEnumerable<Problem>
+@{
+    ViewBag.Title = "Index";
+}
+@if (Request.IsAuthenticated)
+{
+    //kullanıcı login olmuşsa
+    Response.Redirect("~/Problem/Index");
+
+}
+else
+{
+    Response.Redirect("~/Problem/Index");
+}
+
+<h2>Index</h2>
+

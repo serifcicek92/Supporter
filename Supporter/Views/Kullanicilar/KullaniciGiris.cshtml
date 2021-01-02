@@ -1,0 +1,64 @@
+﻿@model Supporter.Models.KullaniciGiris
+@{
+    ViewBag.Title = "KullaniciGiris";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ if (Session["Kullanici"] == null)
+    {
+
+
+        <div class="container pb-5" data-aos="zoom-in">
+            <h2 data-aos="zoom-in-right">Kullanıcı Girişi</h2>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal" data-aos="zoom-in-right">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.KullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2 hvr-buzz" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.KullaniciAdi, new { htmlAttributes = new { @class = "form-control  hvr-grow" } })
+                            @Html.ValidationMessageFor(model => model.KullaniciAdi, "", new { @class = "text-danger" })
+                            <span class="field-validation-valid text-danger">@ViewBag.GirisKontrol</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md-2 hvr-buzz" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control hvr-grow" } })
+                            @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="submit" value="Giriş" class="btn btn-primary  hvr-grow" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+
+                            @Html.ActionLink("Kayıt Ol", "Create")
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+            @ViewBag.girispost
+        </div>
+    }
+
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
